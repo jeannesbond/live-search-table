@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<title>Live Search Table</title>
+	</head>
+	<style>
+		table, td {
+			margin-top: 10px;
+	  		border: 1px solid black;
+		}
+	</style>
+	<body>
+		<input type="text" id="cari" placeholder="Cari...">
+		<table id="table">
+			<tr>
+		   		<td>Aceh United</td>
+		   		<td>Banda Aceh</td>
+		   	</tr>
+  			<tr>
+      			<td>Bali De Vata</td>
+      			<td>Gianyar</td>
+   			</tr>
+   			<tr>
+      			<td>Bandung FC</td>
+      			<td>Bandung</td>
+   			</tr>
+   			<tr>
+      			<td>Batavia Union</td>
+      			<td>Jakarta</td>
+   			</tr>
+   			<tr>
+      			<td>Bintang Medan</td>
+      			<td>Medan</td>
+   			</tr>
+   			<tr>
+      			<td>Bogor Raya</td>
+      			<td>Bogor</td>
+   			</tr>
+   			<tr>
+      			<td>Cendrawasih Papua</td>
+      			<td>Jayapura</td>
+   			</tr>
+   			<tr>
+      			<td>Jakarta FC</td>
+      			<td>Jakarta</td>
+   			</tr>
+   			<tr>
+      			<td>Manado United</td>
+      			<td>Manado</td>
+   			</tr>
+   			<tr>
+      			<td>Medan Chiefs</td>
+      			<td>Deli Serdang</td>
+   			</tr>
+   			<tr>
+      			<td>Minangkabau FC</td>
+      			<td>Padang</td>
+   			</tr>
+   			<tr>
+      			<td>Persebaya 1927</td>
+      			<td>Surabaya</td>
+   			</tr>
+   			<tr>
+      			<td>Persema</td>
+      			<td>Malang</td>
+   			</tr>
+   			<tr>
+      			<td>Persibo</td>
+      			<td>Bojonegoro</td>
+   			</tr>
+   			<tr>
+      			<td>PSM</td>
+      			<td>Makassar</td>
+   			</tr>
+   			<tr>
+      			<td>Real Mataram</td>
+      			<td>Sleman</td>
+   			</tr>
+   			<tr>
+      			<td>Semarang United</td>
+      			<td>Semarang</td>
+   			</tr>
+   			<tr>
+      			<td>Solo FC</td>
+      			<td>Surakarta</td>
+   			</tr>
+   			<tr>
+      			<td>Tangerang Wolves</td>
+      			<td>Tangerang</td>
+   			</tr>
+		</table>	
+  		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
+		<script>
+			var $rows = $('#table tr');
+			$('#cari').keyup(function() {
+    
+				var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+        		reg = RegExp(val, 'i'),
+        		text;
+    
+    			$rows.show().filter(function() {
+    	    		text = $(this).text().replace(/\s+/g, ' ');
+    	    		return !reg.test(text);
+    			}).hide();
+			});
+		</script>
+	</body>
+</html>
